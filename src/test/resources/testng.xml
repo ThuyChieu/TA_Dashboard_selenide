@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Selenide example" verbose="1" thread-count="2" parallel="classes">
+    <test name="Regression on chrome">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="headless" value="false"/>
+        <classes>
+            <class name="DA_LOGIN_TC001"/>
+        </classes>
+    </test>
+</suite>
