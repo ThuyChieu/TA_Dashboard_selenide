@@ -9,6 +9,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import helpers.DateTimeHelper;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
@@ -20,8 +21,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class TestReporter {
-    public static ExtentReports report = null;
-
     public static Log log4j;
 
     public static void logInfo(ExtentTest logTest, String description) {
@@ -105,5 +104,11 @@ public class TestReporter {
         Constants.TOTAL_TESTCASES = testCaseList.size();
     }
 
-
+    public static void log4jConfiguration() {
+        try {
+            log4j = LogFactory.getLog(new Object().getClass().getName());
+        } catch (Exception e) {
+            log4j.error("log4jConfiguaration method - ERROR: ", e);
+        }
+    }
 }
