@@ -48,15 +48,22 @@ public class TestListener implements ITestListener, IClassListener, ISuiteListen
         File folder = new File(REPORT_LOCATION);
         folder.mkdirs();
 
-        logSuite.info("Report link: " + REPORT_LOCATION);
-        logSuite.info("Browser: " + BROWSER);
-        logSuite.info("Thread count: " + THREAD_COUNT);
+        if (logSuite != null) {
+            logSuite.info("Report link: " + REPORT_LOCATION);
+            logSuite.info("Browser: " + BROWSER);
+            logSuite.info("Thread count: " + THREAD_COUNT);
+        }
     }
 
     @Override
     public void onBeforeClass(org.testng.ITestClass testClass) {
         log4j.info("BeforeClass - Starts for " + testClass.getName());
         testCaseName = testClass.getRealClass().getSimpleName();
+        if (report != null) {
+            logClass = report.createTest(testClass.getName());
+        } else {
+            log4j.error("Report is null. Make sure it is initialized in onStart.");
+        }
     }
 
     @Override
@@ -74,10 +81,16 @@ public class TestListener implements ITestListener, IClassListener, ISuiteListen
         }
 
         //Initiate logClass
-        logClass = TestReporter.createTestForExtentReport(report, testNameWithStatus);
+        if(logClass == null) {
+            logClass = TestReporter.createTestForExtentReport(report, testNameWithStatus);
+        }
 
         //Initiate logMethod
-        logMethod = TestReporter.createNodeForExtentReport(logClass, testCaseName);
+        if (logClass != null) {
+            logMethod = TestReporter.createNodeForExtentReport(logClass, testCaseName);
+        } else {
+            log4j.error("logClass is null, cannot create node.");
+        }
 
         log4j.info("BeforeMethod - Ends");
     }

@@ -5,7 +5,10 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 
+import javax.lang.model.element.Element;
+
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class DashboardPage {
     private final SelenideElement header = $(By.id("header"));
@@ -22,14 +25,11 @@ public class DashboardPage {
     }
 
     @Step("Choose an option after click on global setting button")
-    public void chooseAnOptionGlobalSetting() {
+    public void chooseAnOptionGlobalSetting(String option) {
         globalSettingBtn.click();
+        SelenideElement elementOptionGlobalSetting = $x(String.format(option, optionGlobalSetting));
+        elementOptionGlobalSetting.click();
     }
-
-
-
-
-
 
 
 }
