@@ -7,11 +7,12 @@
     </listeners>
 
     <test name="Regression on chrome">
-        <parameter name="browser" value="${browser}"/>
-<!--        <parameter name="browser" value="chrome"/>-->
+<!--        <parameter name="browser" value="${browser}"/>-->
+        <parameter name="browser" value="chrome"/>
         <parameter name="headless" value="false"/>
         <classes>
-<!--            <class name="TestCase014"/>-->
+            <class name="TestCase017"/>
+            <class name="TestCase014"/>
             <class name="TestCase002"/>
         </classes>
     </test>

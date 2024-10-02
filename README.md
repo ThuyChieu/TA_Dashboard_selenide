@@ -9,6 +9,11 @@
 6. Retry Failed Test in TestNG with IRetryAnalyzer and IAnnotationTransformer
 7. Change parameters via command line 
 
+### ✳️ **SYSTEM REQUIREMENTS**
+
+- Install JDK (recommend JDK >= 11)
+- Download jar and setting Variable Environment as Java JDK
+
 ## ✳️ HOW TO USE
 
 ### 1. Run the parallel test case 

@@ -21,7 +21,7 @@ public class LoginPage {
         passwordTxt.sendKeys(password);
         loginBtn.click();
     }
-   @Step("Click Login button without entering model into Username and Password field")
+   @Step("Click Login button without entering/**/ model into Username and Password field")
     public void clickLoginBtn() {
         loginBtn.click();
     }
@@ -34,6 +34,4 @@ public class LoginPage {
     public String getAlertMessage() {
        return switchTo().alert().getText();
     }
-
-
 }
