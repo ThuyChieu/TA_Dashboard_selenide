@@ -1,10 +1,17 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import models.Page;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -57,11 +64,25 @@ public class DashboardPage {
 
     @Step("Get alert message when delete a page")
     public String getAlertMessage() {
-        return switchTo().alert().getText();
+        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.ofSeconds(5));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        String alertText = alert.getText();
+        alert.accept();
+        return alertText;
     }
 
     @Step("CLick on a specific page")
     public void clickOnPage(Page page) {
         $x(String.format(parentPagePage, page.getPageName())).click();
+    }
+
+    @Step("Check page is deleted successfully")
+    public void checkPageDeleted(Page page) {
+        $x(String.format(parentPagePage, page.getPageName())).shouldNotHave();
+    }
+
+    @Step("Check button is disappear")
+    public void checkBtnDisappeared(String option) {
+        $x(String.format(optionGlobalSetting, option)).shouldNotHave();
     }
 }
