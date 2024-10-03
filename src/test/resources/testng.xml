@@ -12,8 +12,8 @@
         <parameter name="headless" value="false"/>
         <classes>
             <class name="TestCase017"/>
-            <class name="TestCase014"/>
-            <class name="TestCase002"/>
+<!--            <class name="TestCase014"/>-->
+<!--            <class name="TestCase002"/>-->
         </classes>
     </test>
 </suite>

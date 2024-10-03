@@ -27,17 +27,25 @@ public class TestCase017 extends TestBase {
 
         logStep = TestReporter.logStepInfo(logMethod, "Step #4: Add a children page of newly added page");
         dashboardPage.chooseAnOptionGlobalSetting("Add Page");
+        newPage.fillInfoNewPageDialog(pageTestChild);
 
         logStep = TestReporter.logStepInfo(logMethod, "Step #5: Click on parent page");
         logStep = TestReporter.logStepInfo(logMethod, "Step #6: Click 'Delete' link");
+
         logStep = TestReporter.logStepInfo(logMethod, "Step #7: Check confirm message 'Are you sure you want to remove this page?' appears");
         logStep = TestReporter.logStepInfo(logMethod, "Step #8: Click OK button");
+        assert dashboardPage.getMessageWhenDeletePage(pageTest).contains("Are you sure you want to remove this page?");
+
         logStep = TestReporter.logStepInfo(logMethod, "Step #9: Check warning message 'Can not delete page 'Test' since it has children page(s)' appears");
         logStep = TestReporter.logStepInfo(logMethod, "Step #10: Click OK button");
+//        assert dashboardPage.getAlertMessage().contains("Cannot delete page 'Test' since it has child page(s)");
+
         logStep = TestReporter.logStepInfo(logMethod, "Step #11: Click on  children page");
         logStep = TestReporter.logStepInfo(logMethod, "Step #12: Click 'Delete' link");
         logStep = TestReporter.logStepInfo(logMethod, "Step #13: Check confirm message 'Are you sure you want to remove this page?' appears");
         logStep = TestReporter.logStepInfo(logMethod, "Step #14: Click OK button");
+        assert dashboardPage.getMessageWhenDeletePage(pageTest).contains("Are you sure you want to remove this page?");
+
         logStep = TestReporter.logStepInfo(logMethod, "Step #15: Check children page is deleted");
         logStep = TestReporter.logStepInfo(logMethod, "Step #16: Click on  parent page");
         logStep = TestReporter.logStepInfo(logMethod, "Step #17: Click 'Delete' link");

@@ -6,6 +6,7 @@ import models.Page;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class NewPage {
     private final SelenideElement pageName = $(By.xpath("//input[@type='text']"));
@@ -18,6 +19,7 @@ public class NewPage {
     @Step("Fill info to create new page")
     public void fillInfoNewPageDialog(Page page) {
         fillPageName(page.getPageName());
+        chooseParentPage(page);
         tickPublic(page.isPublicTick());
         clickOKBtn();
     }
@@ -26,6 +28,14 @@ public class NewPage {
     public void fillPageName(String name) {
         if (name != null) {
             pageName.setValue(name);
+        }
+    }
+
+    @Step("Choose parent page")
+    public void chooseParentPage(Page page) {
+        if (page.getParentPage() != null) {
+            String parentPageName = page.getParentPage().getPageName();
+            $x("//option[contains(text(),'" + parentPageName + "')]").click();
         }
     }
 
