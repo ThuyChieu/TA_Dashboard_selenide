@@ -10,9 +10,6 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class NewPage {
     private final SelenideElement pageName = $(By.xpath("//input[@type='text']"));
-    private final SelenideElement parentPage = $(By.id("parent"));
-    private final SelenideElement columnNumber = $(By.id("columnnumber"));
-    private final SelenideElement displayAfter = $(By.id("afterpage"));
     private final SelenideElement publicTickBox = $(By.id("ispublic"));
     private final SelenideElement OkBtn = $(By.id("OK"));
 
