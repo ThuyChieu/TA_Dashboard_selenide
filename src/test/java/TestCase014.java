@@ -12,11 +12,11 @@ public class TestCase014 extends TestBase {
     @Test(description = "Verify that 'Public' pages can be visible and accessed by all users of working repository")
     public void TC014() {
         Page page1 = Page.builder().pageName("Page1").publicTick(true).build();
-
-        logStep = TestReporter.logStepInfo(logMethod, "Step #1: Navigate to Dashboard login page");
         LoginPage loginPage = new LoginPage();
         DashboardPage dashboardPage = new DashboardPage();
         NewPage newPage = new NewPage();
+
+        logStep = TestReporter.logStepInfo(logMethod, "Step #1: Navigate to Dashboard login page");
         logStep = TestReporter.logStepInfo(logMethod, "Step #2: Log in specific repository with valid account");
         loginPage.login("administrator", "");
 

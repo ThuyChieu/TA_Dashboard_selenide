@@ -22,12 +22,10 @@ public class DashboardPage {
     private final String optionAdministrator = "//a[text()='%s']";
     private final String parentPagePage = "//a[text()='%s']";
     private final String addedPage = "//a[text()='%s']";
-    private final SelenideElement choosePanelBtn = $(By.id("btnChoosepanel"));
-    private final SelenideElement editLink = $(By.xpath("//a[text()='Edit']"));
 
     @Step("Is dashboard page displayed")
-    public boolean isDashboardDisplayed() {
-        return header.isDisplayed();
+    public void isDashboardDisplayed() {
+        header.should(Condition.visible);
     }
 
     @Step("Choose an option after click on global setting button")
@@ -42,8 +40,8 @@ public class DashboardPage {
     }
 
     @Step("Check newly added page is visible")
-    public boolean checkPageIsAdded(String option) {
-        return $x(String.format(addedPage, option)).isDisplayed();
+    public void checkPageIsAdded(String option) {
+        $x(String.format(addedPage, option)).should(Condition.visible);
     }
 
     @Step("Hover on a specific page")

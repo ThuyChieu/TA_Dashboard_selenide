@@ -21,10 +21,7 @@ public class LoginPage {
         passwordTxt.sendKeys(password);
         loginBtn.click();
     }
-   @Step("Click Login button without entering/**/ model into Username and Password field")
-    public void clickLoginBtn() {
-        loginBtn.click();
-    }
+
    @Step("Click logout button")
     public void clickLogoutBtn() {
        adminTxt.hover();

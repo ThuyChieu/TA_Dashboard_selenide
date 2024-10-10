@@ -13,10 +13,10 @@ import static listeners.TestListener.logStep;
 public class TestCase028 {
     @Test(description = "Verify that when 'Add New Panel' form is on focused all other control/form is disabled or locked.")
     public void TC028() {
-        logStep = TestReporter.logStepInfo(logMethod, "Step #1: Navigate to Dashboard login page");
         LoginPage loginPage = new LoginPage();
         DashboardPage dashboardPage = new DashboardPage();
         AddNewPanelDialog addNewPanelDialog = new AddNewPanelDialog();
+        logStep = TestReporter.logStepInfo(logMethod, "Step #1: Navigate to Dashboard login page");
 
         logStep = TestReporter.logStepInfo(logMethod, "Step #2: Log in specific repository with valid account");
         loginPage.login("Administrator", "");
@@ -30,7 +30,8 @@ public class TestCase028 {
         logStep = TestReporter.logStepInfo(logMethod, "Step #5: Click Add New link");
         dashboardPage.chooseAnOptionAdmin("Add New");
 
-        logStep = TestReporter.logStepInfo(logMethod, "Step #6: Try to click other controls when Add New Panel dialog is opening");
+        logStep = TestReporter.logStepInfo(logMethod, "Step #6: Try to click other controls when " +
+                "Add New Panel dialog is opening");
         logStep = TestReporter.logStepInfo(logMethod, "Step #7: Observe the current page");
         addNewPanelDialog.isControlDisabled();
     }
