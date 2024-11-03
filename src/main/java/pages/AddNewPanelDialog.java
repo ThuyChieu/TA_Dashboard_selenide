@@ -13,8 +13,8 @@ public class AddNewPanelDialog {
     private final SelenideElement choosePanelBtn = $(By.id("btnChoosepanel"));
 
     @Step("Add new panel page is displayed")
-    public boolean isAddNewPanelPageDisplay() {
-        return header.isDisplayed();
+    public void isAddNewPanelPageDisplay() {
+        header.should(Condition.visible);
     }
 
     @Step("All control/form are disabled or locked when Add New Panel dialog is opening")
