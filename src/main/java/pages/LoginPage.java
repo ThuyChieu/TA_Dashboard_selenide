@@ -1,10 +1,12 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.switchTo;
 
@@ -30,5 +32,12 @@ public class LoginPage {
    @Step("Get alert message")
     public String getAlertMessage() {
        return switchTo().alert().getText();
+   }
+
+   @Step("Check alert message")
+    public void checkAlertMessage(String expectedResult) {
+       String alertText = switchTo().alert().getText();
+       alertText.contains(expectedResult);
+
     }
 }

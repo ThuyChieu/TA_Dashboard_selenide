@@ -5,6 +5,10 @@ import pages.LoginPage;
 import pages.NewPage;
 import reports.TestReporter;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static listeners.TestListener.logMethod;
 import static listeners.TestListener.logStep;
 
@@ -15,6 +19,7 @@ public class TestCase014 extends TestBase {
         LoginPage loginPage = new LoginPage();
         DashboardPage dashboardPage = new DashboardPage();
         NewPage newPage = new NewPage();
+        List<Page> pages = Collections.singletonList(page1);
 
         logStep = TestReporter.logStepInfo(logMethod, "Step #1: Navigate to Dashboard login page");
         logStep = TestReporter.logStepInfo(logMethod, "Step #2: Log in specific repository with valid account");
@@ -37,6 +42,13 @@ public class TestCase014 extends TestBase {
 
         logStep = TestReporter.logStepInfo(logMethod, "Step #9: Check newly added page is visible");
         dashboardPage.checkPageIsAdded("Page1");
+
+        logStep = TestReporter.logStepInfo(logMethod, "Step #10: Delete added page");
+
+        for (int i = pages.size() - 1; i >= 0; i--) {
+            Page page = pages.get(i);
+            dashboardPage.deleteSpecificPage(page);
+        }
     }
 }
 

@@ -83,4 +83,19 @@ public class DashboardPage {
     public void checkBtnDisappeared(String option) {
         $x(String.format(optionGlobalSetting, option)).shouldNotHave();
     }
+
+    @Step("Delete a specific page")
+    public void deleteSpecificPage(Page page){
+        hoverOnPage(page);
+        clickOnPage(page);
+        deleteAPage();
+    }
+
+    @Step("Delete a chosen page")
+    public void deleteAPage(){
+        chooseAnOptionGlobalSetting("Delete");
+        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), Duration.ofSeconds(5));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.accept();
+    }
 }
